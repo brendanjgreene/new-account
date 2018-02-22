@@ -26,25 +26,19 @@ public class DBService implements DBServiceInterface {
 	@Inject
 	private JSONUtil util;
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#setManager(javax.persistence.EntityManager)
-	 */
+	
 	@Override
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#setUtil(com.qa.util.JSONUtil)
-	 */
+	
 	@Override
 	public void setUtil(JSONUtil util)  {
 		this.util = util;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#getAllAccounts()
-	 */
+	
 	@Override
 	public String getAllAccounts() {
 		Query query = manager.createQuery("Select a FROM Account a");
@@ -52,17 +46,13 @@ public class DBService implements DBServiceInterface {
 		return util.getJSONForObject(accounts);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#findAnAccount(long)
-	 */
+	
 	@Override
 	public String findAnAccount(Long id){
 		return util.getJSONForObject(manager.find(Account.class, id));
 	}
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#createAnAccount(java.lang.String)
-	 */
+	
 	@Override
 	@Transactional(REQUIRED)
 	public String createAnAccount(String mockObject) {
@@ -71,9 +61,7 @@ public class DBService implements DBServiceInterface {
 		return "{\"message\": \"account sucessfully created\"}";
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#updateAnAccount(long, java.lang.String)
-	 */
+	
 	@Override
 	@Transactional(REQUIRED)
 	public String updateAnAccount(long id, String mockObject) {
@@ -86,9 +74,7 @@ public class DBService implements DBServiceInterface {
 		return "{\"message\": \"account sucessfully updated\"}";
 	}
 
-	/* (non-Javadoc)
-	 * @see com.qa.repository.DBServiceInterface#deleteAccount(long)
-	 */
+	
 	@Override
 	@Transactional(REQUIRED)
 	public String deleteAccount(long id) {
