@@ -5,6 +5,7 @@ import static javax.transaction.Transactional.TxType.REQUIRED;
 
 import java.util.Collection;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 
 
@@ -18,7 +19,8 @@ import com.qa.domain.Account;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
-public class DBService implements DBServiceInterface {
+@Default
+public class DBService implements ServiceInterface {
 	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;

@@ -3,7 +3,7 @@ package com.qa.repository;
 import javax.persistence.EntityManager;
 import com.qa.util.JSONUtil;
 
-public interface DBServiceInterface {
+public interface ServiceInterface {
 
 	void setManager(EntityManager manager);
 
