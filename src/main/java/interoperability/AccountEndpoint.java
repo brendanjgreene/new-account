@@ -10,12 +10,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.qa.domain.Account;
+import org.apache.log4j.Logger;
+
 import com.qa.repository.DBService;
-import com.qa.util.JSONUtil;
 
 @Path("/account")
 public class AccountEndpoint {
+	
+	private static final Logger LOGGER = Logger.getLogger(AccountEndpoint.class);
 	
 	@Inject
 	private DBService repo;
@@ -24,6 +26,7 @@ public class AccountEndpoint {
 	@GET
 	@Produces({ "application/json"})
 	public String getAllAccounts() {
+		LOGGER.info("in AccountEndpoint getAllAccounts");
 		return repo.getAllAccounts();
 	};
 	
@@ -31,6 +34,7 @@ public class AccountEndpoint {
 	@GET
 	@Produces({ "application/json"})
 	public String getAnAccount(@PathParam("id") Long id) {
+		LOGGER.info("in AccountEndpoint getAnAccounts");
 		return repo.findAnAccount(id);
 	};
 	
@@ -39,6 +43,7 @@ public class AccountEndpoint {
 	@Produces({ "application/json" })
 	@Consumes({ "application/json" })
 	public String addAccount(String account) {
+		LOGGER.info("in AccountEndpoint addAccounts");
 		return repo.createAnAccount(account);
 	};
 	
@@ -47,6 +52,7 @@ public class AccountEndpoint {
 	@Produces({ "application/json" })
 	@Consumes({ "application/json" })
 	public String updateAccount(@PathParam("id") Long id, String account) {
+		LOGGER.info("in AccountEndpoint updateAccounts");
 		return repo.updateAnAccount(id, account);
 		
 	}
@@ -56,6 +62,7 @@ public class AccountEndpoint {
 	@Produces({ "application/json" })
 	@Consumes({ "application/json" })
 	public String deleteAnAccount(@PathParam("id") Long id) {
+		LOGGER.info("in AccountEndpoint deleteAnAccount");
 		return repo.deleteAccount(id);
 	}
 
