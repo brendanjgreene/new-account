@@ -1,4 +1,4 @@
-package com.qa.application;
+/*package com.qa.application;
 
 import com.qa.domain.Account;
 import com.qa.service.AccountService;
@@ -18,4 +18,4 @@ public class App {
 
 	}
 
-}
+}*/
