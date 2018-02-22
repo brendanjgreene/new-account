@@ -16,6 +16,10 @@ public class Account {
 	private String secondName;
 	@Column(length = 16)
 	private String accountNumber;
+	
+	public Account() {
+		
+	}
 
 	public Account(String firstName, String secondName, String accountNumber) {
 		this.firstName = firstName;

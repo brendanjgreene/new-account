@@ -17,7 +17,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.domain.Account;
-import com.qa.repository.DBService;
 import com.qa.util.JSONUtil;
 
 import junit.framework.Assert;
