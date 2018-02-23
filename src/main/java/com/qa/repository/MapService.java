@@ -29,6 +29,8 @@ public class MapService implements ServiceInterface{
 	@Inject
 	private BusinessLogic bizz;
 	
+	
+	
 	public MapService() {
 		LOGGER.info("in MapService Mapservice constructor");
 		this.accountMap = new HashMap<Long, Account>();
@@ -100,5 +102,6 @@ public class MapService implements ServiceInterface{
 		
 		
 	}
+	
 
 }
