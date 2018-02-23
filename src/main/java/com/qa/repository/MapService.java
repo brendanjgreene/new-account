@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 
+import com.qa.business.BusinessLogic;
 import com.qa.domain.Account;
 import com.qa.util.JSONUtil;
 
@@ -24,6 +25,9 @@ public class MapService implements ServiceInterface{
 	
 	@Inject
 	private JSONUtil util;
+	
+	@Inject
+	private BusinessLogic bizz;
 	
 	public MapService() {
 		LOGGER.info("in MapService Mapservice constructor");
@@ -67,9 +71,8 @@ public class MapService implements ServiceInterface{
 		LOGGER.info("in MapService createAnAccount increment ID");
 		Account newAccount = util.getObjectForJSON(mockObject, Account.class);
 		LOGGER.info("in MapService createAnAccount initialize Account Object");
-		String acnum = newAccount.getAccountNumber();
-		System.out.println(acnum);
-		if (acnum.equals("9999")) {
+		
+		if (bizz.deny9999(newAccount)==false) {
 			reply = "{\"message\": \"This account is blocked\"}";
 
 		}else{

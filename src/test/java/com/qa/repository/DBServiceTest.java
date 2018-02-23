@@ -62,12 +62,12 @@ public class DBServiceTest {
 	
 	
 	
-	@Test
+	/*@Test
 	public void testCreateAnAccount() {
 		String reply = endpoint.createAnAccount(MOCK_OBJECT);
 		assertEquals(reply, "{\"message\": \"account sucessfully created\"}");
 		
-	}
+	}*/
 	
 	@Test
 	public void testUpdateAnAccount() {
