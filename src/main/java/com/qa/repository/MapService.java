@@ -33,6 +33,7 @@ public class MapService implements ServiceInterface{
 	}
 
 	private void initAccountMap() {
+		LOGGER.info("in MapService initAccountMap");
 		Account account = new Account("Brendan", "Greene", "9876");
 		accountMap.put(1L, account);
 		
@@ -41,39 +42,54 @@ public class MapService implements ServiceInterface{
 
 	@Override
 	public void setUtil(JSONUtil util) {
+		LOGGER.info("in MapService setUtil util = "+util);
 		this.util = util;
 		
 	}
 
 	@Override
 	public String getAllAccounts() {
+		LOGGER.info("in MapService getAllAccounts");
 		return util.getJSONForObject(accountMap.values());
 	}
 
 	@Override
 	public String findAnAccount(Long id) {
+		LOGGER.info("in MapService findAnAccount");
 		return util.getJSONForObject(accountMap.get(id));
 	}
 
 	@Override
 	public String createAnAccount(String mockObject) {
+		String reply;
+		LOGGER.info("in MapService createAnAccount");
 		ID++;
+		LOGGER.info("in MapService createAnAccount increment ID");
 		Account newAccount = util.getObjectForJSON(mockObject, Account.class);
-		accountMap.put(ID, newAccount);
-		return mockObject;
+		LOGGER.info("in MapService createAnAccount initialize Account Object");
+		String acnum = newAccount.getAccountNumber();
+		System.out.println(acnum);
+		if (acnum.equals("9999")) {
+			reply = "{\"message\": \"This account is blocked\"}";
+
+		}else{
+			accountMap.put(ID, newAccount);
+			reply = "{\"message\": \"account sucessfully created\"}";
+		}
+		return reply;
 	}
 
 	@Override
 	public String updateAnAccount(long id, String mockObject) {
 		Account newAccount = util.getObjectForJSON(mockObject, Account.class);
 		accountMap.put(id, newAccount);
-		return mockObject;
+		return "{\"message\": \"account updated\"} "+mockObject;
 	}
 
 	@Override
 	public String deleteAccount(long id) {
 		accountMap.remove(id);
-		return "{\"message\": \"account deleted\"]";
+		return "{\"message\": \"account deleted\"}";
 	}
 
 	@Override

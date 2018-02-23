@@ -58,9 +58,16 @@ public class DBService implements ServiceInterface {
 	@Override
 	@Transactional(REQUIRED)
 	public String createAnAccount(String mockObject) {
+		String reply;
 		Account anAccount = util.getObjectForJSON(mockObject, Account.class);
-		manager.persist(anAccount);
-		return "{\"message\": \"account sucessfully created\"}";
+		if (anAccount.getAccountNumber().equals("9999")) {
+			reply = "{\"message\": \"This account is blocked\"}";
+
+		}else {
+			manager.persist(anAccount);
+			reply = "{\"message\": \"account sucessfully created\"}";
+		}
+		return reply;
 	}
 	
 	
