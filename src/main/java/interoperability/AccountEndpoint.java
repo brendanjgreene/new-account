@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import org.apache.log4j.Logger;
 
 import com.qa.repository.DBService;
+import com.qa.repository.ServiceInterface;
 
 @Path("/account")
 public class AccountEndpoint {
@@ -20,7 +21,7 @@ public class AccountEndpoint {
 	private static final Logger LOGGER = Logger.getLogger(AccountEndpoint.class);
 	
 	@Inject
-	private DBService repo;
+	private ServiceInterface repo;
 	
 	@Path("/json")
 	@GET

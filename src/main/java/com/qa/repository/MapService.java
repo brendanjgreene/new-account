@@ -26,13 +26,14 @@ public class MapService implements ServiceInterface{
 	private JSONUtil util;
 	
 	public MapService() {
+		LOGGER.info("in MapService Mapservice constructor");
 		this.accountMap = new HashMap<Long, Account>();
 		ID = INITIAL_COUNT;
 		initAccountMap();
 	}
 
 	private void initAccountMap() {
-		Account account = new Account("Brendan", "Greene", "09876");
+		Account account = new Account("Brendan", "Greene", "9876");
 		accountMap.put(1L, account);
 		
 	}
@@ -51,8 +52,7 @@ public class MapService implements ServiceInterface{
 
 	@Override
 	public String findAnAccount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return util.getJSONForObject(accountMap.get(id));
 	}
 
 	@Override
