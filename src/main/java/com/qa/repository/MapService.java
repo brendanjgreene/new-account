@@ -73,7 +73,7 @@ public class MapService implements ServiceInterface{
 	@Override
 	public String deleteAccount(long id) {
 		accountMap.remove(id);
-		return "{\"message\"; \"account deleted\"]";
+		return "{\"message\": \"account deleted\"]";
 	}
 
 	@Override
