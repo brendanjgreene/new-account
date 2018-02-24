@@ -1,4 +1,4 @@
-package interoperability;
+package com.qa.interoperability;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
