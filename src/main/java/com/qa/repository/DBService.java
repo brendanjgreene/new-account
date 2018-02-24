@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.business.BusinessLogic;
 import com.qa.domain.Account;
 import com.qa.util.JSONUtil;
 
@@ -27,6 +28,8 @@ public class DBService implements ServiceInterface {
 	
 	@Inject
 	private JSONUtil util;
+	
+	@Inject BusinessLogic bizz;
 
 	
 	@Override
@@ -58,9 +61,16 @@ public class DBService implements ServiceInterface {
 	@Override
 	@Transactional(REQUIRED)
 	public String createAnAccount(String mockObject) {
+		String reply;
 		Account anAccount = util.getObjectForJSON(mockObject, Account.class);
-		manager.persist(anAccount);
-		return "{\"message\": \"account sucessfully created\"}";
+		if (bizz.deny9999(anAccount)==false) {
+			reply = "{\"message\": \"This account is blocked\"}";
+
+		}else {
+			manager.persist(anAccount);
+			reply = "{\"message\": \"account sucessfully created\"}";
+		}
+		return reply;
 	}
 	
 	
